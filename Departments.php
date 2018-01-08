@@ -23,9 +23,9 @@
 <body onload = "createChart();">
 	<a href = "index.php" id = "pageTitle">Q-Analytics</a>
 	<div id = "header" align = "center">
-		<a href = "index.php">Courses</a>
-		<a href = "general.php">General</a>
-		<a href = "departments.php">Department</a>
+	<a href = "semesters.php">Semesters</a>
+	<a href = "index.php">Courses</a>
+	<a href = "departments.php">Departments</a>
 	</div>
 	<div id="mainForm" align = "center">
 		<select id = "listDepts" align = "center" onchange="listDepts_Selected();">	

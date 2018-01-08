@@ -1,5 +1,5 @@
 function createChart(){
-    var c = JSON.parse(document.getElementById("valCourse").value);
+    var c = JSON.parse(document.getElementById("valCourse").value.replace("~", "'"));
     var ctxEnroll = document.getElementById("chartEnroll").getContext("2d");
     var semesters = [];
     var enrollments = [];

@@ -17,7 +17,7 @@
 ?>
 <html>
 <head>
-    <title>Home</title>
+    <title>Q-Analytics</title>
     <script src = "<?php echo BASE_URL;?>/scripts/all.js"></script>
     <script src = "<?php echo BASE_URL;?>/scripts/index.js"></script>
     <link rel = "stylesheet" type = "text/css" href = "<?php echo BASE_URL;?>/styles/all.css"/>
@@ -27,9 +27,9 @@
     <a href = "index.php" id = "pageTitle">Q-Analytics</a>
 
     <div id = "header" align = "center">
+        <a href = "semesters.php">Semesters</a>
         <a href = "index.php">Courses</a>
-        <a href = "general.php">General</a>
-        <a href = "departments.php">Department</a>
+        <a href = "departments.php">Departments</a>
     </div>
 	<div id="mainForm">
         <input type = "hidden" id = "valSearch" value = "<?php

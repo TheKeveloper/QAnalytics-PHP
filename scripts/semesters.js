@@ -1,7 +1,7 @@
 function listSemesters_Selected(){
     var listSems= document.getElementById("listSemesters");
 
-    window.location.href = getPath() + "/general.php?sem=" + listSems.selectedIndex;
+    window.location.href = getPath() + "/semesters.php?sem=" + listSems.selectedIndex;
 }
 
 function createChart(){
@@ -28,7 +28,7 @@ function createChart(){
                 type: "scatter",
                 label: "Enrollment vs. Recommend", 
                 data: enrollRec,
-                borderColor: "rgba(0, 0, 255, 0.2)",
+                borderColor: "rgba(0, 0, 255, 0.4)",
                 backgroundColor: "rgba(0, 0, 255, 0.2)"
             }]
         },
@@ -37,7 +37,8 @@ function createChart(){
             tooltips: {
                 callbacks : {
                     label : function(tooltipsItem, data){
-                        return codes[tooltipsItem.index];
+                        var index = tooltipsItem.index;
+                        return codes[index] + " (" + enrollRec[index].x + ", " + enrollRec[index].y + ")"
                     }
                 }
             }
@@ -51,7 +52,7 @@ function createChart(){
                 type: "scatter",
                 label: "Workload vs. Recommend",
                 data: workRec,
-                borderColor: "rgba(255, 0, 0, 0.2)",
+                borderColor: "rgba(255, 0, 0, 0.4)",
                 backgroundColor: "rgba(255, 0, 0, 0.2)"
             }]
         },
@@ -70,7 +71,8 @@ function createChart(){
             tooltips: {
                 callbacks : {
                     label : function(tooltipsItem, data){
-                        return codes[tooltipsItem.index];
+                        var index = tooltipsItem.index;
+                        return codes[index] + " (" + workRec[index].x + ", " + workRec[index].y + ")"
                     }
                 }
             }
