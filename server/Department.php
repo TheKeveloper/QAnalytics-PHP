@@ -29,7 +29,7 @@
         }
 
         function load($conn){
-            $dept = $code . "%";
+            $dept = $this->code . "%";
             $cmd = $conn->prepare("SELECT * FROM courses WHERE code LIKE ? ORDER BY year ASC, semester DESC");
             $cmd->bind_param("s", $dept);
             $cmd->execute();
