@@ -90,6 +90,42 @@
                 }
             ?>
         </table>
+
+        <h4 align = "center">Most Enjoyable Courses</h4>
+        <table id = "tblDifferentials">
+            <tr>
+                <td/><td/>
+                <td class = "rowheader" style="width:100px">Recommend</td>
+                <td class = "rowheader" style="width:100px">Workload</td>
+                <td class = "rowheader" style="width:100px">Enrollment</td>
+            </tr>
+            <?php
+                usort($courses, function($a, $b){
+                    
+                    $adif = sqrt($a->infos[0]->enrollment) * ($a->infos[0]->recommend - $a->infos[0]->workload);
+                    $bdif = sqrt($b->infos[0]->enrollment) * ($b->infos[0]->recommend - $b->infos[0]->workload);
+
+                    if($a->infos[0]->workload < 0){
+                        return $adif < $bdif; 
+                    }
+                    if($b->infos[0]->workload < 0){
+                        return $bdif < $adif;
+                    }
+                    return $bdif - $adif;
+                });
+
+                for($i = 0; $i < 15; $i++){
+                    $cellNum = "<td style='width:50px;'>" . ($i + 1) . ".</td>";
+                    $link = "<a href = '" . BASE_URL . "/courses.php?code=" . $courses[$i]->code ."'/>";
+                    $cellCode = "<td style='width: 150px;'>$link" . $courses[$i]->code . "</a></td>";
+                    $cellRecommend = "<td>" . $courses[$i]->infos[0]->recommend . "</td>";
+                    $cellWork = "<td>" . $courses[$i]->infos[0]->workload . "</td>";
+                    $cellEnrollment = "<td>" . $courses[$i]->infos[0]->enrollment. "</td>";
+
+                    echo "<tr>$cellNum $cellCode $cellRecommend $cellWork $cellEnrollment</tr>";
+                }
+            ?>
+        </table>
     </div>
 </body>
 </html>
