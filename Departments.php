@@ -1,6 +1,16 @@
 ﻿<!DOCTYPE html>
 <?php
-    include("server/all.php");
+	include("server/all.php");
+	
+	$dept_name = $_GET["dept"];
+	if($dept_name == null){
+		$dept_name = "AESTHINT";
+	}
+	$conn = new mysqli(SERVER_NAME, DB_USER, DB_PASS, DB_NAME);
+	$depts = getDepartments($conn);
+	$dept = new Department($dept_name);
+	$dept->load($conn);
+	$conn->close();
 ?>
 <html>
 <head>
@@ -18,15 +28,18 @@
 		<a href = "departments.php">Department</a>
 	</div>
 	<div id="mainForm" align = "center">
-		<select id = "listDepts" align = "center">	
+		<select id = "listDepts" align = "center" onchange="listDepts_Selected();">	
 			<?php
-
+				foreach($depts as $d){
+					$selected = $d == $dept_name ? "selected" : "";
+					echo "<option value = '$d' $selected>$d</option>";
+				}
 			?>
 		</select>
 
-		<input type = "hidden" id = "valDept" value = "<?php
-		
-		?>"/>
+		<input type = "hidden" id = "valDept" value = '<?php
+			echo json_encode($dept);
+		?>'/>
 	</div>
     <div id = "charts" align = "center">
 		<canvas id = "chartEnroll" width = "800" height = "400"></canvas>

@@ -25,13 +25,8 @@
             return (Season::toStr($this->season)." ".$this->year);
         }
 
-        static function compare($a, $b){
-            if($a->year != $b->year){
-                return $a->year - $b->year;
-            }
-            else{
-                return $b->season - $a->season;
-            }
+        function equals($s){
+            return $this->year == $s->year && $this->season == $s->season;
         }
     }
 
@@ -49,14 +44,23 @@
         }
 
         function adjust_workload(){
-            if($this->semester->year > 2014 || ($this->semester->year == 2014 && $this->semester->year == Season::Fall)){
-                $this->workload = $this->workload * 3.0 / 13.0;
+            if($this->semester->year > 2014 || ($this->semester->year == 2014 && $this->semester->season == Season::Fall)){
+                $this->workload = $this->workload * 3.0 / 8.0;
                 if($this->workload > 5) $this->workload = 5;
                 else if($this->workload < 1)$this->workload = 1;
 
                 $this->workload = round($this->workload, 2);
             }
             return $this;
+        }
+    }
+
+    function info_compare($a, $b){
+        if($a->semester->year != $b->semester->year){
+            return $a->semester->year < $b->semester->year ? -1 : 1;
+        }
+        else{
+            return $b->semester->season - $a->semester->season;
         }
     }
     class Course{
@@ -86,7 +90,7 @@
                 array_push($this->infos, (new Info(new Semester($row["semester"], $row["year"]), $row["enrollment"], $row["recommend"], $row["workload"]))->adjust_workload());
             }
 
-            usort($this->infos, ["Semester", "compare"]);
+            usort($this->infos, "info_compare"); 
         }
 
         static function get_courses_simple($conn, $minSems = 2){

@@ -1,3 +1,10 @@
+function listDepts_Selected(){
+    var listDepts = document.getElementById("listDepts");
+    var dept = listDepts.options[listDepts.selectedIndex].value;
+
+    window.location.href = getPath() + "/departments.php?dept=" + dept;
+}
+
 function createChart(){
     var dept = JSON.parse(document.getElementById("valDept").value);
     var ctxEnroll = document.getElementById("chartEnroll").getContext("2d");
@@ -6,12 +13,12 @@ function createChart(){
     var recommends = [];
     var workloads = [];
 
-    for(var i = 0; i < dept.Infos.length; i++){
-        var strSem = dept.Infos[i].Semester.Season == 0 ? "Fall" : "Spring";
-        semesters.push(strSem + " " + dept.Infos[i].Semester.Year);
-        enrollments.push(dept.Infos[i].AggregateEnrollment);
-        recommends.push(dept.Infos[i].AvgRecommend);
-        workloads.push(dept.Infos[i].AvgWorkload);
+    for(var i = 0; i < dept.infos.length; i++){
+        var strSem = dept.infos[i].semester.season == 0 ? "Fall" : "Spring";
+        semesters.push(strSem + " " + dept.infos[i].semester.year);
+        enrollments.push(dept.infos[i].enrollment);
+        recommends.push(dept.infos[i].recommend);
+        workloads.push(dept.infos[i].workload);
     }
 
     var enrollConfig = {
