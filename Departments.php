@@ -1,26 +1,33 @@
-﻿<%@ Page Language="C#" Inherits="QAnalytics.Departments" %>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
+<?php
+    include("server/all.php");
+?>
 <html>
-<head runat="server">
+<head>
 	<title>Departments</title>
-	<link rel = "stylesheet" type = "text/css" href = "/styles/all.css"/>
-	<script type = "text/javascript" src = "/scripts/libraries/Chart.js"></script>
-	<script type = "text/javascript" src = "/scripts/departments.js"></script>
+	<link rel = "stylesheet" type = "text/css" href = "<?php echo BASE_URL;?>/styles/all.css"/>
+	<script src = "<?php echo BASE_URL;?>/scripts/all.js"></script>
+	<script type = "text/javascript" src = "<?php echo BASE_URL;?>/scripts/libraries/Chart.js"></script>
+	<script type = "text/javascript" src = "<?php echo BASE_URL;?>/scripts/departments.js"></script>
 </head>
 <body onload = "createChart();">
-	<a href = "Default.aspx" id = "pageTitle">Q-Analytics</a>
+	<a href = "index.php" id = "pageTitle">Q-Analytics</a>
 	<div id = "header" align = "center">
-			<a href = "Default.aspx">Courses</a>
-			<a href = "General.aspx">General</a>
-			<a href = "Departments.aspx">Department</a>
+		<a href = "index.php">Courses</a>
+		<a href = "general.php">General</a>
+		<a href = "departments.php">Department</a>
 	</div>
-	<form id="mainForm" runat="server">
-            <div id = "nav" align = "center">
-                <asp:DropDownList id = "listDepts" runat="server" AutoPostBack = "true"/>
-            </div>
+	<div id="mainForm" align = "center">
+		<select id = "listDepts" align = "center">	
+			<?php
 
-            <asp:HiddenField id = "valDept" runat="server"/>
-	</form>
+			?>
+		</select>
+
+		<input type = "hidden" id = "valDept" value = "<?php
+		
+		?>"/>
+	</div>
     <div id = "charts" align = "center">
 		<canvas id = "chartEnroll" width = "800" height = "400"></canvas>
 		<canvas id = "chartRatings" width = "800" height = "400"></canvas>

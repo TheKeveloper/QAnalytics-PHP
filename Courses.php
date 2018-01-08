@@ -1,26 +1,35 @@
-﻿<%@ Page Language="C#" Inherits="QAnalytics.Courses" %>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
+<?php
+    include("server/all.php");
+?>
 <html>
-<head runat="server">
+<head>
 	<title>Courses</title>
-	<script src = "/scripts/libraries/Chart.js"></script>
-	<script src = "/scripts/courses.js"></script>
-	<script src = "/scripts/default.js"></script>
-	<link rel = "stylesheet" type = "text/css" href = "/styles/all.css"/>
-	<link rel = "stylesheet" type = "text/css" href = "/styles/course.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "<?php echo BASE_URL;?>/styles/all.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "<?php echo BASE_URL;?>/styles/course.css"/>
+	<script src = "<?php echo BASE_URL;?>/scripts/all.js"></script>
+	<script src = "<?php echo BASE_URL;?>/scripts/libraries/Chart.js"></script>
+	<script src = "<?php echo BASE_URL;?>/scripts/courses.js"></script>
+	<script src = "<?php echo BASE_URL;?>/scripts/index.js"></script>
 </head>
 <body onload = "createChart()">
-	<a href = "Default.aspx" id = "pageTitle">Q-Analytics</a>
+	<a href = "index.php" id = "pageTitle">Q-Analytics</a>
 	<div id = "header" align = "center">
-			<a href = "Default.aspx">Courses</a>
-			<a href = "General.aspx">General</a>
-			<a href = "Departments.aspx">Department</a>
+		<a href = "index.php">Courses</a>
+		<a href = "general.php">General</a>
+		<a href = "departments.php">Department</a>
 	</div>
-	<!--
-	<form id="mainForm" align = "center" runat="server">
-			<asp:Label id = "lblTitle" Text = "Course" align = "center" runat="server"></asp:Label>
-            <asp:HiddenField id = "valCourse" runat="server"></asp:HiddenField>
-	</form> -->
+	
+	<div id="mainForm" align = "center">
+		<div id = "lblTitle">
+			<?php
+
+			?>
+		</div>
+	</div>
+	<input type = "hidden" id = "valCourse" value = "<?php 
+	
+	?>"/>
 	<div id = "charts" align = "center">
 		<canvas id = "chartEnroll" class = "chart" width = "800" height = "400"></canvas>
 		<canvas id = "chartRatings" class = "chart" width = "800" height = "400"></canvas>
