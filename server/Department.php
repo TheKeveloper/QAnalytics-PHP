@@ -1,4 +1,5 @@
 <?php
+    //Get list of departments
     function getDepartments($conn){
         $codes = array();
         $depts = array();
@@ -11,7 +12,9 @@
         }
 
         foreach($codes as $code){
+            //Split along the sace
             $dept = explode(" ", $code)[0];
+            //Add new department to array if not already in
             if(!in_array($dept, $depts)){
                 array_push($depts, $dept);
             }
@@ -29,7 +32,8 @@
         }
 
         function load($conn){
-            $dept = $this->code . "%";
+            //Retrieve all courses
+            $dept = $this->code . " %";
             $cmd = $conn->prepare("SELECT * FROM courses WHERE code LIKE ? ORDER BY year ASC, semester DESC");
             $cmd->bind_param("s", $dept);
             $cmd->execute();
@@ -38,20 +42,25 @@
             $cur = count($this->infos) - 1;
             while($row = $result->fetch_assoc()){
                 $sem = new Semester($row["semester"], $row["year"]);
+                //New semester to be addded
                 if(count($this->infos) < 1 || !$sem->equals($this->infos[$cur]->semester)){
                     if($cur >= 0){
+                        //Divide by enrollment to create average
                         $this->infos[$cur]->recommend /=$this->infos[$cur]->enrollment;
                         $this->infos[$cur]->workload /= $this->infos[$cur]->enrollment;
 
+                        //Round the numbers to two decimal places
                         $this->infos[$cur]->recommend = round($this->infos[$cur]->recommend, 2);
                         $this->infos[$cur]->workload= round($this->infos[$cur]->workload, 2);
 
+                        //Adjust workload for more recent semesters
                         $this->infos[$cur]->adjust_workload();
                     }
                     array_push($this->infos, new Info($sem, 0, 0, 0));
                     $cur++;
                 }
 
+                //Increment info for current info
                 $this->infos[$cur]->enrollment += $row["enrollment"];
                 $this->infos[$cur]->recommend += $row["enrollment"] * $row["recommend"];
                 $this->infos[$cur]->workload += $row["enrollment"] * $row["workload"];
