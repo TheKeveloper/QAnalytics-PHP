@@ -3,10 +3,17 @@
     include("server/all.php");
     define("PER_PAGE", 25);
     $conn = new mysqli(SERVER_NAME, DB_USER, DB_PASS, DB_NAME);
-    $courses = Course::get_courses_simple($conn);
+    $page = $_GET["page"];
+    $search = $_GET["search"];
+    if($search == null){
+        $search = "";
+    }
+    $search = str_replace("_", " ", $search);
+    $courses = Course::search_courses($conn, $search);
     $conn->close();
 
-    $page = $_GET["page"];
+    $pageMax = ceil(count($courses) / 25.0) - 1;
+
 ?>
 <html>
 <head>
@@ -26,28 +33,35 @@
     </div>
 	<div id="mainForm">
         <input type = "hidden" id = "valSearch" value = "<?php
+            echo $search;
         ?>"/>
-        <div align = "center" id = "search">
-            <input type = "text" id = "txtSearch" value = "<?php
-            
+        <div align = "center" id = "search" >
+            <input type = "text" id = "txtSearch" onkeypress= "txtSearch_Key(event);" value = "<?php
+                echo $search;
             ?>"/>
-            <button id = "btnSearch" onclick = "btnSearch_Click();">Search</input>
+            <input type ="button" id = "btnSearch" onclick = "btnSearch_Click();" value = "Search"></input>
             <br/>
         </div>
 
         <div id = "nav" align = "center" >
             <a href = "<?php
-            
+                $prev = $page - 1;
+                if($prev < 0) $prev = 0;
+                echo BASE_URL . "/index.php?page=$prev&search=$search";
             ?>" id = "linkPrev">Prev</a>
             <select id = "listPages" onchange = "listPages_SelectionChanged();">
                 <?php
-                    for($i = 0; $i < count($courses) / PER_PAGE; $i++){
+                    for($i = 0; $i <= $pageMax; $i++){
                         echo "<option value = '$i'". ($i == $page ? "selected" : ""). ">$i</option>";
                     }
                 ?>
             </select>
             <a href = "<?php
-            
+                $next = $page + 1;
+                if($next >= $pageMax){
+                    $next = $pageMax;
+                }
+                echo BASE_URL . "/index.php?page=$next&search=$search";
             ?>" id = "linkNext">Next</a>
         </div>
 

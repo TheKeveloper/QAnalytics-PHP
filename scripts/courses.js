@@ -6,12 +6,12 @@ function createChart(){
     var recommends = [];
     var workloads = [];
 
-    for(var i = 0; i < c.Infos.length; i++){
-        var strSem = c.Infos[i].Semester.Season == 0 ? "Fall" : "Spring";
-        semesters.push(strSem + " " + c.Infos[i].Semester.Year);
-        enrollments.push(c.Infos[i].Enrollment);
-        recommends.push(c.Infos[i].Recommend);
-        workloads.push(c.Infos[i].Workload);
+    for(var i = 0; i < c.infos.length; i++){
+        var strSem = c.infos[i].semester.season == 0 ? "Fall" : "Spring";
+        semesters.push(strSem + " " + c.infos[i].semester.year);
+        enrollments.push(c.infos[i].enrollment);
+        recommends.push(c.infos[i].recommend);
+        workloads.push(c.infos[i].workload);
     }
 
     var enrollConfig = {

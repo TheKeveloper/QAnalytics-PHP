@@ -104,6 +104,29 @@
 
         static function search_courses($conn, $search, $minSems = 2){
             $courses = array();
+
+            $search = "%" . strtoupper(str_replace(" ", "%", $search)) . "%";
+            $search = Course::parse_common($search);
+            $cmd = $conn->prepare("SELECT code, name, count(code) as c FROM courses WHERE code LIKE ? OR name LIKE ? GROUP BY code, name HAVING c >= ?");
+            $cmd->bind_param("ssi", $search, $search, $minSems);
+
+            $cmd->execute();
+
+            $result = $cmd->get_result();
+            while($row = $result->fetch_assoc()){
+                array_push($courses, new Course($row["code"], $row["name"]));
+            }
+
+            return $courses;
+        }
+
+        static function parse_common($search){
+            $search = str_replace("%CS", "%COMPSCI%", $search);
+            $search = str_replace("%EC%", "%ECON%", $search);
+            $search = str_replace("%SLS%", "%SCILIVSY%", $search);
+            $search = str_replace("%LS%", "%LIFESCI%", $search);
+
+            return $search;
         }
 
     }
