@@ -16,6 +16,7 @@
 <head>
     <title>Semesters</title>
     <link rel = "stylesheet" type = "text/css" href = "<?php echo BASE_URL;?>/styles/all.css"/>
+    <link rel = "stylesheet" type = "text/css" href = "<?php echo BASE_URL;?>/styles/semesters.css"/>
     <script src = "<?php echo BASE_URL;?>/scripts/all.js"></script>
     <script type = "text/javascript" src = "<?php echo BASE_URL;?>/scripts/libraries/Chart.js"></script>
     <script type = "text/javascript" src = "<?php echo BASE_URL;?>/scripts/semesters.js"></script>
@@ -52,6 +53,43 @@
     <div id = "charts" align = "center">
         <canvas id = "chartEnroll" width = "800" height = "400"></canvas> <br/>
         <canvas id = "chartWork" width = "800" height = "400"></canvas> <br/>
+    </div>
+
+    <div id = "rankings">
+        <h4 align = "center">Most Popular Courses</h4>
+        <table id = "tblPopular">
+            <?php
+                usort($courses, function($a, $b){
+                    return $b->infos[0]->enrollment - $a->infos[0]->enrollment;
+                });
+
+                for($i = 0; $i < 5; $i++){
+                    $cellNum = "<td style='width:50px;'>" . ($i + 1) . ".</td>";
+                    $link = "<a href = '" . BASE_URL . "/courses.php?code=" . $courses[$i]->code ."'/>";
+                    $cellCode = "<td style='width: 150px;'>$link" . $courses[$i]->code . "</a></td>";
+                    $cellEnroll = "<td style='width:60px'>" . $courses[$i]->infos[0]->enrollment . "</td><td>students</td>";
+
+                    echo "<tr>$cellNum $cellCode $cellEnroll</tr>";
+                }
+            ?>
+        </table>
+
+        <h4 align = "center">Most Difficult Courses</h4>
+        <table id = "tblWork">
+            <?php
+                usort($courses, function($a, $b){
+                    return $b->infos[0]->workload - $a->infos[0]->workload;
+                });
+
+                for($i = 0; $i < 5; $i++){
+                    $cellNum = "<td style='width:50px;'>" . ($i + 1) . ".</td>";
+                    $link = "<a href = '" . BASE_URL . "/courses.php?code=" . $courses[$i]->code ."'/>";
+                    $cellCode = "<td style='width:150px;'>$link" . $courses[$i]->code . "</a></td>";
+                    $cellWork = "<td style = 'width: 60px'>" . $courses[$i]->infos[0]->workload . "</td><td>hrs</td>";
+                    echo "<tr>$cellNum $cellCode $cellWork</tr>";
+                }
+            ?>
+        </table>
     </div>
 </body>
 </html>

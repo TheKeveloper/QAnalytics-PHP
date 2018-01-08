@@ -58,3 +58,8 @@ body{
     margin: 10px;
     font-size: 13pt;
 }
+
+html *{
+    text-decoration: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

@@ -1,0 +1,16 @@
+h4 {
+    color: #777777;
+}
+
+table{
+    margin-left: 40px;
+}
+
+table *{
+    color: #666666;
+}
+
+td a{
+    color: #555555;
+    font-weight: bold;
+}
