@@ -1,20 +1,21 @@
-function createChart(){
-    var enrollments = JSON.parse(document.getElementById("valEnrollments").value);
-    var recommends = JSON.parse(document.getElementById("valRecommends").value);
-    var workloads = JSON.parse(document.getElementById("valWorkloads").value);
-    var regEnrollRec = JSON.parse(document.getElementById("valEnrollRec").value);
-    var regWorkRec = JSON.parse(document.getElementById("valWorkRec").value);
+function listSemesters_Selected(){
+    var listSems= document.getElementById("listSemesters");
 
+    window.location.href = getPath() + "/general.php?sem=" + listSems.selectedIndex;
+}
+
+function createChart(){
+    var courses = JSON.parse(document.getElementById("valCourses").value);
+    var codes = [];
     var enrollRec = [];
     var workRec = [];
 
-    var eMax = 0;
-    var wMax = 0;
-    for(var i = 0; i < enrollments.length; i++){
-        if(recommends[i] > 0) enrollRec.push({x: enrollments[i], y: recommends[i]});
-        if(recommends[i] > 0 && workloads[i] > 0) workRec.push({x: workloads[i], y: recommends[i]});
-        if(enrollments[i] > enrollments[eMax]) eMax = i;
-        if(workloads[i] > workloads[wMax]) wMax = i;
+    for(var i = 0; i < courses.length; i++){
+        if(courses[i].infos != undefined && courses[i].infos[0].workload > 0){
+            codes.push(courses[i].code);
+            enrollRec.push({x: courses[i].infos[0].enrollment, y: courses[i].infos[0].recommend});
+            workRec.push({x: courses[i].infos[0].workload, y: courses[i].infos[0].recommend});
+        }
     }
 
     var enrollCtx = document.getElementById("chartEnroll").getContext("2d");
@@ -25,18 +26,21 @@ function createChart(){
         data: { 
             datasets: [{
                 type: "scatter",
-                label: "Enrollment vs. Recommend",
+                label: "Enrollment vs. Recommend", 
                 data: enrollRec,
-            },{
-                type:"line",
-                label: "Regression Line",
-                backgroundColor: "#FF0000",
-                borderColor: "#FF0000",
-                data:[
-                    {x: 0, y: regEnrollRec.B},
-                    {x: 1000, y: regEnrollRec.M * 1000 + regEnrollRec.B}
-                ]
+                borderColor: "rgba(0, 0, 255, 0.2)",
+                backgroundColor: "rgba(0, 0, 255, 0.2)"
             }]
+        },
+        options : {
+            responsive : false, 
+            tooltips: {
+                callbacks : {
+                    label : function(tooltipsItem, data){
+                        return codes[tooltipsItem.index];
+                    }
+                }
+            }
         }
     }
 
@@ -47,24 +51,35 @@ function createChart(){
                 type: "scatter",
                 label: "Workload vs. Recommend",
                 data: workRec,
-            },{
-                type:"line",
-                label: "Regression Line",
-                backgroundColor: "#FF0000",
-                borderColor: "#FF0000",
-                data:[
-                    {x: 0, y: regWorkRec.B},
-                    {x: workloads[wMax],y: regWorkRec.M * workloads[wMax] + regWorkRec.B}
-                ]
+                borderColor: "rgba(255, 0, 0, 0.2)",
+                backgroundColor: "rgba(255, 0, 0, 0.2)"
             }]
+        },
+        options : {
+            responsive : false,
+            scales :{ 
+                yAxes : [{
+                    display : true,
+                    ticks : {
+                        min : 1.0,
+                        max : 5.0,
+                        stepSize : 0.5
+                    }
+                }]
+            },
+            tooltips: {
+                callbacks : {
+                    label : function(tooltipsItem, data){
+                        return codes[tooltipsItem.index];
+                    }
+                }
+            }
         }
     }
 
     var enrollChart = new Chart(enrollCtx, enrollConfig);
     var lblEnrollReg = document.getElementById("lblEnrollReg");
-    lblEnrollReg.innerHTML = "R: " + regEnrollRec.R + " Slope: " + regEnrollRec.M + " B: " + regEnrollRec.B;
 
     var workChart = new Chart(workCtx, workConfig);
     var lblWorkReg = document.getElementById("lblWorkReg");
-    lblWorkReg.innerHTML = "R: " + regWorkRec.R + " Slope: " + regWorkRec.M + " B: " + regWorkRec.B;
 }

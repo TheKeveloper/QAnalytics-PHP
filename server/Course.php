@@ -134,4 +134,46 @@
         }
 
     }
+
+    function sem_compare($a, $b){
+        if($a->year != $b->year){
+            return $a->year - $b->year;
+        }
+        else{
+            return $b->season - $a->season;
+        }
+    }
+
+    function get_semesters($conn){
+        $sems = array();
+        $cmd = $conn->prepare("SELECT semester, year FROM courses GROUP BY semester, year");
+        $cmd->execute();
+        $result = $cmd->get_result();
+
+        while($row = $result->fetch_assoc()){
+            array_push($sems, new Semester($row["semester"], $row["year"]));
+        }
+
+        usort($sems, "sem_compare");
+
+        return $sems;
+    }
+
+    function load_semester($conn, $sem){
+        $courses = array();
+        $season = $sem->season;
+        $year = $sem->year;
+        $cmd = $conn->prepare("SELECT * FROM courses WHERE semester = ? AND year = ?");
+        $cmd->bind_param("ii", $season, $year);
+        $cmd->execute();
+        $result = $cmd->get_result();
+
+        while($row = $result->fetch_assoc()){
+            $c = new Course($row["code"]);
+            array_push($c->infos, new Info($sem, $row["enrollment"], $row["recommend"], $row["workload"]));
+            array_push($courses, $c);
+        }
+
+        return $courses;
+    }
 ?>
