@@ -63,7 +63,7 @@
                     return $b->infos[0]->enrollment - $a->infos[0]->enrollment;
                 });
 
-                for($i = 0; $i < 5; $i++){
+                for($i = 0; $i < 10; $i++){
                     $cellNum = "<td style='width:50px;'>" . ($i + 1) . ".</td>";
                     $link = "<a href = '" . BASE_URL . "/courses.php?code=" . $courses[$i]->code ."'/>";
                     $cellCode = "<td style='width: 150px;'>$link" . $courses[$i]->code . "</a></td>";
@@ -81,7 +81,7 @@
                     return $b->infos[0]->workload - $a->infos[0]->workload;
                 });
 
-                for($i = 0; $i < 5; $i++){
+                for($i = 0; $i < 10; $i++){
                     $cellNum = "<td style='width:50px;'>" . ($i + 1) . ".</td>";
                     $link = "<a href = '" . BASE_URL . "/courses.php?code=" . $courses[$i]->code ."'/>";
                     $cellCode = "<td style='width:150px;'>$link" . $courses[$i]->code . "</a></td>";

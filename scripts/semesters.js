@@ -41,6 +41,22 @@ function createChart(){
                         return codes[index] + " (" + enrollRec[index].x + ", " + enrollRec[index].y + ")"
                     }
                 }
+            },
+            scales : {
+                yAxes : [{
+                    display : true,
+                    scaleLabel : {
+                        display : true,
+                        labelString : "Recommend"
+                    }
+                }],
+                xAxes : [{
+                    display : true,
+                    scaleLabel : {
+                        display : true,
+                        labelString : "Enrollment"
+                    }
+                }]
             }
         }
     }
@@ -65,6 +81,17 @@ function createChart(){
                         min : 1.0,
                         max : 5.0,
                         stepSize : 0.5
+                    },
+                    scaleLabel : {
+                        display : true,
+                        labelString : "Recommend"
+                    }
+                }],
+                xAxes : [{
+                    display : true,
+                    scaleLabel : {
+                        display : true,
+                        labelString : "Workload"
                     }
                 }]
             },
