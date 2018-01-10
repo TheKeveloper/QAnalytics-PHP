@@ -41,5 +41,8 @@
 		<canvas id = "chartRatings" class = "chart" width = "800" height = "400"></canvas>
 	</div>
 
+	<div id = "footer" align = "center">
+        <?php echo FOOTER ?>
+    </div>
 </body>
 </html>

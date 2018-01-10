@@ -86,8 +86,7 @@
     </div>
 
     <div id = "footer" align = "center">
-        Data from q.fas.harvard.edu <br/>
-        Created by <a href = "mailto:kevinbi@college.harvard.edu">Kevin Bi</a>.
+        <?php echo FOOTER ?>
     </div>
 </body>
 </html>

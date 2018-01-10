@@ -127,5 +127,8 @@
             ?>
         </table>
     </div>
+    <div id = "footer" align = "center">
+        <?php echo FOOTER ?>
+    </div>
 </body>
 </html>
