@@ -183,9 +183,11 @@
         $result = $cmd->get_result();
 
         while($row = $result->fetch_assoc()){
-            $c = new Course($row["code"]);
-            array_push($c->infos, new Info($sem, $row["enrollment"], $row["recommend"], $row["workload"]));
-            array_push($courses, $c);
+            if($row["recommend"] > 0 && $row["workload"] > 0){
+                $c = new Course($row["code"]);
+                array_push($c->infos, new Info($sem, $row["enrollment"], $row["recommend"], $row["workload"]));
+                array_push($courses, $c);
+            }
         }
 
         return $courses;

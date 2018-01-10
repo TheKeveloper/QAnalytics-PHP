@@ -104,13 +104,6 @@
                     
                     $adif = sqrt($a->infos[0]->enrollment) * ($a->infos[0]->recommend - $a->infos[0]->workload);
                     $bdif = sqrt($b->infos[0]->enrollment) * ($b->infos[0]->recommend - $b->infos[0]->workload);
-
-                    if($a->infos[0]->workload < 0){
-                        return $adif < $bdif; 
-                    }
-                    if($b->infos[0]->workload < 0){
-                        return $bdif < $adif;
-                    }
                     return $bdif - $adif;
                 });
 
