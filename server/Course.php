@@ -131,7 +131,7 @@
             $result = $cmd->get_result();
             
             while($row = $result->fetch_assoc()){
-                if(!in_array($row["code"], $codes)){
+                if(count($codes) == 0 || $codes[count($codes) - 1] != $row["code"]){
                     array_push($codes, $row["code"]);
                     array_push($courses, new Course($row["code"], $row["name"]));
                 }
