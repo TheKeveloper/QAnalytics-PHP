@@ -102,7 +102,7 @@
         }
 
         //Get the code and name of all courses
-        static function get_courses_simple($conn, $minSems = 2){
+        static function get_courses_simple($conn, $minSems = 1){
             $courses = array();
             $cmd = $conn->prepare("SELECT code, name, count(code) as c FROM courses GROUP BY code, name HAVING c >= ? ORDER BY code ASC;");
             $cmd->bind_param("i", $minSems);
@@ -116,7 +116,7 @@
         }
 
         //Search for a given course
-        static function search_courses($conn, $search, $minSems = 2){
+        static function search_courses($conn, $search, $minSems = 1){
             $courses = array();
             //Modify the search term for SQL
             $search = "%" . strtoupper(str_replace(" ", "%", $search)) . "%";
