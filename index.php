@@ -17,7 +17,7 @@
 ?>
 <html>
 <head>
-    <title>Q-Analytics</title>
+    <title><?php echo TITLE?></title>
     <script src = "<?php echo BASE_URL;?>/scripts/all.js"></script>
     <script src = "<?php echo BASE_URL;?>/scripts/index.js"></script>
     <link rel = "stylesheet" type = "text/css" href = "<?php echo BASE_URL;?>/styles/all.css"/>
@@ -86,6 +86,7 @@
     </div>
 
     <div id = "footer" align = "center">
+        Data from q.fas.harvard.edu <br/>
         Created by <a href = "mailto:kevinbi@college.harvard.edu">Kevin Bi</a>.
     </div>
 </body>
