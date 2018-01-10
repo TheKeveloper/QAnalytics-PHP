@@ -46,8 +46,12 @@
         <div id = "nav" align = "center" >
             <a href = "<?php
                 $prev = $page - 1;
-                if($prev < 0) $prev = 0;
-                echo BASE_URL . "/index.php?page=$prev&search=$search";
+                if($prev < 0){
+                    echo "\" style=\"visibility: hidden\"";
+                }
+                else{
+                    echo BASE_URL . "/index.php?page=$prev&search=$search";
+                }
             ?>" id = "linkPrev">Prev</a>
             <select id = "listPages" onchange = "listPages_SelectionChanged();">
                 <?php
@@ -59,9 +63,11 @@
             <a href = "<?php
                 $next = $page + 1;
                 if($next >= $pageMax){
-                    $next = $pageMax;
+                    echo "\" style=\"visibility: hidden\"";
                 }
-                echo BASE_URL . "/index.php?page=$next&search=$search";
+                else{
+                    echo BASE_URL . "/index.php?page=$next&search=$search";
+                }
             ?>" id = "linkNext">Next</a>
         </div>
 

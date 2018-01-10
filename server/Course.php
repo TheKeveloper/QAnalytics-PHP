@@ -118,6 +118,7 @@
         //Search for a given course
         static function search_courses($conn, $search, $minSems = 1){
             $courses = array();
+            $codes = array();
             //Modify the search term for SQL
             $search = "%" . strtoupper(str_replace(" ", "%", $search)) . "%";
             //Change common course alternates
@@ -128,8 +129,12 @@
             $cmd->execute();
 
             $result = $cmd->get_result();
+            
             while($row = $result->fetch_assoc()){
-                array_push($courses, new Course($row["code"], $row["name"]));
+                if(!in_array($row["code"], $codes)){
+                    array_push($codes, $row["code"]);
+                    array_push($courses, new Course($row["code"], $row["name"]));
+                }
             }
 
             return $courses;
