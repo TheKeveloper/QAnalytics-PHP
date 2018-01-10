@@ -62,7 +62,7 @@
             </select>
             <a href = "<?php
                 $next = $page + 1;
-                if($next >= $pageMax){
+                if($next > $pageMax){
                     echo "\" style=\"visibility: hidden\"";
                 }
                 else{
