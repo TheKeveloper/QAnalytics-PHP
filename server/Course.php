@@ -39,17 +39,20 @@
         public $enrollment;
         public $recommend;
         public $workload;
+        public $rawWorkload;
 
         function __construct($semester, $enrollment, $recommend, $workload){
             $this->semester = $semester;
             $this->enrollment = $enrollment;
             $this->recommend = $recommend;
             $this->workload = $workload;
+            $this->rawWorkload = -1;
         }
 
         //Adjust the workload to account for changed system
         function adjust_workload(){
             if($this->semester->year > 2014 || ($this->semester->year == 2014 && $this->semester->season == Season::Fall)){
+                $this->rawWorkload = $this->workload;
                 $this->workload = $this->workload * 3.0 / 8.0;
                 if($this->workload > 5) $this->workload = 5;
                 else if($this->workload < 1)$this->workload = 1;

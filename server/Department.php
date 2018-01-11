@@ -46,12 +46,12 @@
                 if(count($this->infos) < 1 || !$sem->equals($this->infos[$cur]->semester)){
                     if($cur >= 0){
                         //Divide by enrollment to create average
-                        $this->infos[$cur]->recommend /=$this->infos[$cur]->enrollment;
+                        $this->infos[$cur]->recommend /= $this->infos[$cur]->enrollment;
                         $this->infos[$cur]->workload /= $this->infos[$cur]->enrollment;
 
                         //Round the numbers to two decimal places
                         $this->infos[$cur]->recommend = round($this->infos[$cur]->recommend, 2);
-                        $this->infos[$cur]->workload= round($this->infos[$cur]->workload, 2);
+                        $this->infos[$cur]->workload = round($this->infos[$cur]->workload, 2);
 
                         //Adjust workload for more recent semesters
                         $this->infos[$cur]->adjust_workload();

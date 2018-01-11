@@ -61,6 +61,28 @@ function createChart(){
         },
         options : {
             responsive : false,
+            tooltips: {
+                callbacks : {
+                    label : function(tooltipsItem, data){
+                        var index = tooltipsItem.index; 
+                        var dataset = tooltipsItem.datasetIndex;
+                        if(dataset === 0){
+                            return "Recommend: " + recommends[index];
+                        }
+                        else if(dataset === 1){
+                            if(dept.infos[index].rawWorkload > 0){
+                                return "Workload: " + workloads[index] + ", " + dept.infos[index].rawWorkload + " (raw hours)";
+                            }
+                            else{
+                                return "Workload: " + workloads[index];
+                            }
+                        }
+                        else{
+                            return "Error displaying label";
+                        }
+                    }
+                }
+            },
             scales :{ 
                 yAxes : [{
                     display : true,
