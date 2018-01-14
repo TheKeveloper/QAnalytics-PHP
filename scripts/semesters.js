@@ -28,8 +28,8 @@ function createChart(){
                 type: "scatter",
                 label: "Enrollment vs. Recommend", 
                 data: enrollRec,
-                borderColor: "rgba(0, 0, 255, 0.4)",
-                backgroundColor: "rgba(0, 0, 255, 0.2)"
+                borderColor: "rgba(255, 0, 0, 0.4)",
+                backgroundColor: "rgba(255, 0, 0, 0.2)"
             }]
         },
         options : {
@@ -68,8 +68,8 @@ function createChart(){
                 type: "scatter",
                 label: "Workload vs. Recommend",
                 data: workRec,
-                borderColor: "rgba(255, 0, 0, 0.4)",
-                backgroundColor: "rgba(255, 0, 0, 0.2)"
+                borderColor: "rgba(0, 0, 255, 0.4)",
+                backgroundColor: "rgba(0, 0, 255, 0.2)"
             }]
         },
         options : {
