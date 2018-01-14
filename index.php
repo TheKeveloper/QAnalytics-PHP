@@ -91,6 +91,32 @@
 
     </div>
 
+    <div id = "nav" align = "center" >
+            <a href = "<?php
+                if($prev < 0){
+                    echo "\" style=\"visibility: hidden\"";
+                }
+                else{
+                    echo BASE_URL . "/index.php?page=$prev&search=$search";
+                }
+            ?>" id = "linkPrev">Prev</a>
+            <select id = "listPages" onchange = "listPages_SelectionChanged();">
+                <?php
+                    for($i = 0; $i <= $pageMax; $i++){
+                        echo "<option value = '$i'". ($i == $page ? "selected" : ""). ">$i</option>";
+                    }
+                ?>
+            </select>
+            <a href = "<?php
+                if($next > $pageMax){
+                    echo "\" style=\"visibility: hidden\"";
+                }
+                else{
+                    echo BASE_URL . "/index.php?page=$next&search=$search";
+                }
+            ?>" id = "linkNext">Next</a>
+        </div>
+
     <div id = "footer" align = "center">
         <?php echo FOOTER ?>
     </div>
