@@ -149,6 +149,8 @@
             $search = str_replace("%EC%", "%ECON%", $search);
             $search = str_replace("%SLS%", "%SCILIVSY%", $search);
             $search = str_replace("%LS%", "%LIFESCI%", $search);
+            $search = str_replace("%USW%", "%US-WORLD%", $search); 
+            $search = str_replace("%ER%", "%ETHRSON%", $search); 
 
             return $search;
         }

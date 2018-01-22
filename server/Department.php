@@ -68,6 +68,10 @@
 
             $this->infos[$cur]->recommend /= $this->infos[$cur]->enrollment;
             $this->infos[$cur]->workload /= $this->infos[$cur]->enrollment;
+
+            $this->infos[$cur]->recommend = round($this->infos[$cur]->recommend, 2);
+            $this->infos[$cur]->workload = round($this->infos[$cur]->workload, 2);
+
             $this->infos[$cur]->adjust_workload();
             
             usort($this->infos, "info_compare");
