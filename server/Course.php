@@ -151,6 +151,8 @@
             $search = str_replace("%LS%", "%LIFESCI%", $search);
             $search = str_replace("%USW%", "%US-WORLD%", $search); 
             $search = str_replace("%ER%", "%ETHRSON%", $search); 
+            $search = str_replace("%SW%", "%SOCWORLD%", $search); 
+            $search = str_replace("%AM%", "%APMTH%", $search);
 
             return $search;
         }
