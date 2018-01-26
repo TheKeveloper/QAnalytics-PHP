@@ -15,7 +15,7 @@
     </p>
     <h3>Why are the hours weird after Fall 2014?</h3>
     <p>
-        In Fall 2014, the Harvard Q-Guide changed its hour counting system from being on a 1 to 5 scale, 
+        In Fall 2014, the Harvard Q-Guide changed its hour counting system from being on a 1 to 5 scale to being on a raw hours scale. In order to best represent the long term trend, we adjust the new values to fit in a 1 to 5 scale. However, some courses do not fit nicely into the 1 to 5 scale following Fall 2014, so there may seem to be abrupt changes in workload that do not in fact exist.
     </p>
     
     <h3>How are the most enjoyable classes determined?</h3>
