@@ -24,13 +24,8 @@
     <link rel = "stylesheet" type = "text/css" href = "<?php echo BASE_URL;?>/styles/index.css"/>
 </head>
 <body>
-    <a href = "index.php" id = "pageTitle"><?php echo TITLE?></a>
-
-    <div id = "header" align = "center">
-        <a href = "semesters.php">Semesters</a>
-        <a href = "index.php">Courses</a>
-        <a href = "departments.php">Departments</a>
-    </div>
+    <?php
+    echo HEADER ?>
 	<div id="mainForm">
         <input type = "hidden" id = "valSearch" value = "<?php
             echo $search;

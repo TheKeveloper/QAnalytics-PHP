@@ -19,12 +19,7 @@
 	<script src = "<?php echo BASE_URL;?>/scripts/index.js"></script>
 </head>
 <body onload = "createChart()">
-	<a href = "index.php" id = "pageTitle"><?php echo TITLE?></a>
-	<div id = "header" align = "center">
-		<a href = "semesters.php">Semesters</a>
-		<a href = "index.php">Courses</a>
-		<a href = "departments.php">Departments</a>
-	</div>
+	<?php echo HEADER ?>
 	
 	<div id="mainForm" align = "center">
 		<div id = "lblTitle">

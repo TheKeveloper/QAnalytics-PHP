@@ -63,3 +63,10 @@ html *{
     text-decoration: none;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+h3 {
+    margin-left: 10px; 
+}
+p {
+    margin-left: 20px;
+}
