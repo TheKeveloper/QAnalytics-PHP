@@ -4,6 +4,7 @@
 ?>
 <html>
     <head> 
+        <?php echo GOOGLE_ANALYTICS ?>
         <title>FAQ</title>
         <script src = "<?php echo BASE_URL;?>/scripts/all.js"></script>
         <link rel = "stylesheet" type = "text/css" href = "<?php echo BASE_URL;?>/styles/all.css"/>

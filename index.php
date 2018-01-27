@@ -17,6 +17,7 @@
 ?>
 <html>
 <head>
+    <?php echo GOOGLE_ANALYTICS ?>
     <title><?php echo TITLE?></title>
     <script src = "<?php echo BASE_URL;?>/scripts/all.js"></script>
     <script src = "<?php echo BASE_URL;?>/scripts/index.js"></script>

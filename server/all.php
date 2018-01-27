@@ -14,5 +14,16 @@
         <a href = \"index.php\">Courses</a>
         <a href = \"departments.php\">Departments</a>
         <a href = \"faq.php\">FAQ</a>
-    </div>")
+    </div>");
+
+    define("GOOGLE_ANALYTICS",
+    "<!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-44600100-2\"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-44600100-2');
+    </script>");
 ?>

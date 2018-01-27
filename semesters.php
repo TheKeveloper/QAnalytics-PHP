@@ -14,6 +14,7 @@
 ?>
 <html>
 <head>
+    <?php echo GOOGLE_ANALYTICS ?>
     <title>Semesters</title>
     <link rel = "stylesheet" type = "text/css" href = "<?php echo BASE_URL;?>/styles/all.css"/>
     <link rel = "stylesheet" type = "text/css" href = "<?php echo BASE_URL;?>/styles/semesters.css"/>
