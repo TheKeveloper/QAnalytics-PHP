@@ -8,9 +8,7 @@
     Created by <a href = \"mailto:kevinbi@college.harvard.edu\">Kevin Bi</a>.");
     define("HEADER",
     "<a href = \"index.php\" id = \"pageTitle\">" . TITLE . "</a>
-    <br/>
-    <center>NOTE: This site is for Harvard users ONLY. If you are not affiliated with Harvard, please leave.</center>
-
+    
     <div id = \"header\" align = \"center\">
         <a href = \"semesters.php\">Semesters</a>
         <a href = \"index.php\">Courses</a>
@@ -27,7 +25,10 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-44600100-2');
-    </script>");
+    </script>
+    <meta name=\"google-signin-scope\" content=\"profile email\">
+    <meta name=\"google-signin-client_id\" content=\"158812636692-v5gt6q9h1s8c664sflui9m92i2o144n7.apps.googleusercontent.com\">
+    <script src=\"https://apis.google.com/js/platform.js\" async defer></script>");
 
     function authenticate(){
         if(isset($_COOKIE["email"]) && strpos($_COOKIE["email"], "harvard.edu")){
@@ -36,7 +37,7 @@
         else{
             echo "
             <center>
-            This website is only for harvard students. Please sign into your harvard.edu email account to access.
+            This website is only for Harvard students. Please sign into your harvard.edu email account to access.
             <br/>
             Don't worry, it's through Google. I promise I'm not saving your info.
             <br/>
