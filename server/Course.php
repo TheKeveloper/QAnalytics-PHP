@@ -153,6 +153,9 @@
             $search = str_replace("%ER%", "%ETHRSON%", $search); 
             $search = str_replace("%SW%", "%SOCWORLD%", $search); 
             $search = str_replace("%AM%", "%APMTH%", $search);
+            $search = str_replace("%PS%", "%PHYSCI%", $search);
+            $search = str_replace("%CB%", "%CULTBLF%", $search);
+            $search = str_replace("%SPU%", "%SCIPHUNV%", $search); 
 
             return $search;
         }
