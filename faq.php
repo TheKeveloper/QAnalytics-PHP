@@ -4,12 +4,13 @@
 ?>
 <html>
     <head> 
-        <?php echo GOOGLE_ANALYTICS ?>
+        <?php echo GOOGLE_SCRIPTS ?>
         <title>FAQ</title>
         <script src = "<?php echo BASE_URL;?>/scripts/all.js"></script>
         <link rel = "stylesheet" type = "text/css" href = "<?php echo BASE_URL;?>/styles/all.css"/>
     </head>
     <?php echo HEADER ?>
+    <?php authenticate(); ?>
     <h3>Where is the data from?</h3>
     <p>
         The data is retrieved from the <a href = "http://q.fas.harvard.edu" target="_blank">Harvard Q-Guide</a>.

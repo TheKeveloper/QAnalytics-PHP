@@ -17,16 +17,19 @@
 ?>
 <html>
 <head>
-    <?php echo GOOGLE_ANALYTICS ?>
+    <?php echo GOOGLE_SCRIPTS ?>
     <title><?php echo TITLE?></title>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="158812636692-v5gt6q9h1s8c664sflui9m92i2o144n7.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src = "<?php echo BASE_URL;?>/scripts/all.js"></script>
     <script src = "<?php echo BASE_URL;?>/scripts/index.js"></script>
     <link rel = "stylesheet" type = "text/css" href = "<?php echo BASE_URL;?>/styles/all.css"/>
     <link rel = "stylesheet" type = "text/css" href = "<?php echo BASE_URL;?>/styles/index.css"/>
 </head>
 <body>
-    <?php
-    echo HEADER ?>
+    <?php echo HEADER; ?>
+    <?php authenticate(); ?>
 	<div id="mainForm">
         <input type = "hidden" id = "valSearch" value = "<?php
             echo $search;

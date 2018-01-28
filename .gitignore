@@ -1,3 +1,5 @@
 bootstrap.php
 *.DS_Store
 *.DS_Store?
+vendor/
+composer.*

@@ -10,7 +10,7 @@
 ?>
 <html>
 <head>
-	<?php echo GOOGLE_ANALYTICS ?>
+	<?php echo GOOGLE_SCRIPTS ?>
 	<title><?php echo $code;?></title>
 	<link rel = "stylesheet" type = "text/css" href = "<?php echo BASE_URL;?>/styles/all.css"/>
 	<link rel = "stylesheet" type = "text/css" href = "<?php echo BASE_URL;?>/styles/courses.css"/>
@@ -21,7 +21,7 @@
 </head>
 <body onload = "createChart()">
 	<?php echo HEADER ?>
-	
+	<?php authenticate(); ?>
 	<div id="mainForm" align = "center">
 		<div id = "lblTitle">
 			<?php

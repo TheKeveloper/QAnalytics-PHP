@@ -14,7 +14,7 @@
 ?>
 <html>
 <head>
-    <?php echo GOOGLE_ANALYTICS ?>
+    <?php echo GOOGLE_SCRIPTS ?>
     <title>Semesters</title>
     <link rel = "stylesheet" type = "text/css" href = "<?php echo BASE_URL;?>/styles/all.css"/>
     <link rel = "stylesheet" type = "text/css" href = "<?php echo BASE_URL;?>/styles/semesters.css"/>
@@ -24,6 +24,7 @@
 </head>
 <body onload = "createChart()">
     <?php echo HEADER ?>
+    <?php authenticate(); ?>
 	<div id="mainForm"  align = "center">
         <select id = "listSemesters" onchange = "listSemesters_Selected();">
             <?php

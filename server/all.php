@@ -18,7 +18,7 @@
         <a href = \"faq.php\">FAQ</a>
     </div>");
 
-    define("GOOGLE_ANALYTICS",
+    define("GOOGLE_SCRIPTS",
     "<!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-44600100-2\"></script>
     <script>
@@ -28,4 +28,35 @@
 
         gtag('config', 'UA-44600100-2');
     </script>");
+
+    function authenticate(){
+        if(isset($_COOKIE["email"]) && strpos($_COOKIE["email"], "harvard.edu")){
+
+        }
+        else{
+            echo "
+            <center>
+            This website is only for harvard students. Please sign into your harvard.edu email account to access. 
+            <br/>
+            <br/>
+            <div class='g-signin2' data-onsuccess='onSignIn' data-theme='dark'></div>
+            </center>
+            <script>
+                function onSignIn(googleUser) {
+                    // Useful data for your client-side scripts:
+                    var profile = googleUser.getBasicProfile();
+                    if(document.cookie.includes('email') == false){
+                        if(profile.getEmail().includes('college.harvard.edu')){
+                            document.cookie = 'email=' + profile.getEmail() + '; path=/';   
+                        }
+                        else{
+                            gapi.auth2.getAuthInstance().disconnect();
+                        }
+                        location.reload(); 
+                    }
+                };
+            </script>";
+            exit();
+        }
+    }
 ?>

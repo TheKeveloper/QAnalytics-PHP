@@ -14,7 +14,7 @@
 ?>
 <html>
 <head>
-	<?php echo GOOGLE_ANALYTICS ?>
+	<?php echo GOOGLE_SCRIPTS ?>
 	<title>Departments</title>
 	<link rel = "stylesheet" type = "text/css" href = "<?php echo BASE_URL;?>/styles/all.css"/>
 	<script src = "<?php echo BASE_URL;?>/scripts/all.js"></script>
@@ -23,6 +23,7 @@
 </head>
 <body onload = "createChart();">
 	<?php echo HEADER ?>
+	<?php authenticate(); ?>
 	<div id="mainForm" align = "center">
 		<select id = "listDepts" align = "center" onchange="listDepts_Selected();">	
 			<?php
