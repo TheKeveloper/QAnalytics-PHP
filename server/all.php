@@ -8,6 +8,8 @@
     Created by <a href = \"mailto:kevinbi@college.harvard.edu\">Kevin Bi</a>.");
     define("HEADER",
     "<a href = \"index.php\" id = \"pageTitle\">" . TITLE . "</a>
+    <br/>
+    <center>NOTE: This site is for Harvard users ONLY. If you are not affiliated with Harvard, please leave.</center>
 
     <div id = \"header\" align = \"center\">
         <a href = \"semesters.php\">Semesters</a>
