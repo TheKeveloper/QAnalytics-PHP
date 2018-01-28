@@ -37,10 +37,7 @@
         else{
             echo "
             <center>
-            This website is only for Harvard students. Please sign into your harvard.edu email account to access.
-            <br/>
-            Don't worry, it's through Google. I promise I'm not saving your info.
-            <br/>
+            This website is for Harvard students ONLY. Please sign into your harvard.edu email account to access.
             <br/>
             <div class='g-signin2' data-onsuccess='onSignIn' data-theme='dark'></div>
             </center>
